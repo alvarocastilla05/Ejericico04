@@ -21,13 +21,13 @@ public class BicicletaService {
         List<Bicicleta> result = bicicletaRepository.findAll();
 
         if(result.isEmpty())
-            throw new EntityNotFoundException("No hay bicicletas con esos criterios de busqueda.");
+            throw new EntityNotFoundException("No hay bicicletas con esos criterios de búsqueda.");
         return result;
     }
 
     public Bicicleta findById(Long id){
         return bicicletaRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("No hay bicicletas con el id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("No hay bicicletas con el id: "+ id +"."));
     }
 
     public Bicicleta save(EditBicicletaCmd nuevo){
@@ -36,7 +36,7 @@ public class BicicletaService {
                 .modelo(nuevo.modelo())
                 .estado(nuevo.estado())
                 .estacion(estacionRepository.findById(nuevo.estacionId())
-                        .orElseThrow(() -> new EntityNotFoundException("No hay estacion con ese id")))
+                        .orElseThrow(() -> new EntityNotFoundException("No hay ninguna estación con ese id.")))
                 .build()
         );
     }
@@ -48,10 +48,10 @@ public class BicicletaService {
                     old.setModelo(editBicicletaCmd.modelo());
                     old.setEstado(editBicicletaCmd.estado());
                     old.setEstacion(estacionRepository.findById(editBicicletaCmd.estacionId())
-                            .orElseThrow(() -> new EntityNotFoundException("No hay estacion con ese id")));
+                            .orElseThrow(() -> new EntityNotFoundException("No hay ninguna estación con ese id.")));
                     return bicicletaRepository.save(old);
                         })
-                .orElseThrow(() -> new EntityNotFoundException("No hay con porducto con id: " +id));
+                .orElseThrow(() -> new EntityNotFoundException("No hay ninguna bicicleta con id: "+ id +"."));
 
     }
 
