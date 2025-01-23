@@ -59,11 +59,47 @@ public class DataSeed {
                 .estado("Disponible")
                 .build();
 
+        Bicicleta bicicleta3 = Bicicleta.builder()
+                .marca("MarcaY")
+                .modelo("ModeloB")
+                .estado("Disponible")
+                .build();
+
+        Bicicleta bicicleta4 = Bicicleta.builder()
+                .marca("MarcaY")
+                .modelo("ModeloB")
+                .estado("Disponible")
+                .build();
+
+        Bicicleta bicicleta5 = Bicicleta.builder()
+                .marca("MarcaC")
+                .modelo("ModeloB")
+                .estado("Disponible")
+                .build();
+
+        Bicicleta bicicleta6 = Bicicleta.builder()
+                .marca("MarcaY")
+                .modelo("ModeloB")
+                .estado("Disponible")
+                .build();
+
         estacion1.addBicicleta(bicicleta1);
         estacion2.addBicicleta(bicicleta2);
+        estacion1.addBicicleta(bicicleta3);
+        estacion1.addBicicleta(bicicleta4);
+        estacion1.addBicicleta(bicicleta5);
+        estacion2.addBicicleta(bicicleta6);
 
         bicicletaRepository.save(bicicleta1);
         bicicletaRepository.save(bicicleta2);
+        bicicletaRepository.save(bicicleta3);
+        bicicletaRepository.save(bicicleta4);
+        bicicletaRepository.save(bicicleta5);
+        bicicletaRepository.save(bicicleta6);
+
+
+
+
 
         // Crear usuarios.
 
@@ -135,6 +171,9 @@ public class DataSeed {
         System.out.println(estacion2);
 
         usoRepository.delete(uso1);
+
+        System.out.println(bicicletaRepository.countBicicletaByMarca("MarcaY"));
+
 
     }
 
